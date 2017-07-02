@@ -27,7 +27,7 @@ module Letters
     def words
       @words ||= begin
         words = Set.new
-        File.open('/usr/share/dict/words').each_line { |w|  words.add(w.chomp.downcase) }
+        File.open(__dir__+'/../words.txt').each_line { |w|  words.add(w.chomp.downcase) }
         words
       end
     end
