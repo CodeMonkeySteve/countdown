@@ -21,6 +21,7 @@ module Enumerable
 end
 
 VALID_NUMBERS = (1..10).to_a + [25, 50, 75, 100]
+desc "Solve the numbers game"
 task :numbers do
   numbers = target = nil
   loop do
@@ -44,6 +45,7 @@ task :numbers do
   puts Numbers::Solver.solutions(target, numbers).unique.first(10)
 end
 
+desc "Solve the letters game"
 task :letters do
   letters = nil
   loop do
