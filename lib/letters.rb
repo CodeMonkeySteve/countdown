@@ -2,8 +2,8 @@ require 'set'
 
 module Letters
   class Solver
-    def self.solutions(letters)
-      new(letters).solutions
+    def self.solutions(letters, **opts)
+      new(letters).solutions(**opts)
     end
 
     def initialize(letters)
@@ -11,9 +11,9 @@ module Letters
       @letters = letters.reject(&:blank?).map(&:downcase)
     end
 
-    def solutions
+    def solutions(min_length: 1)
       Enumerator.new do |out|
-        @letters.length.downto(1).each do |len|
+        @letters.length.downto(min_length).each do |len|
           @letters.permutation(len).each do |w|
             word = w.join('')
             out << word  if words.include?(word)

@@ -58,3 +58,9 @@ task :letters do
   end
   puts Letters::Solver.solutions(letters).unique.first(20)
 end
+
+desc "Solve any anagram"
+task :anagram do
+  letters = $stdin.gets.chomp
+  puts Letters::Solver.solutions(letters, min_length: letters.length).unique.to_a
+end
