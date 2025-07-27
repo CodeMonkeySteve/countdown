@@ -50,11 +50,8 @@ task :letters do
   letters = nil
   loop do
     print "Letters: " ; letters = $stdin.gets.chomp
-    if letters.length != 9
-      puts "Expected 9 letters"
-    else
-      break
-    end
+    (letters.length == 9) or puts "Warning: expected 9 letters"
+    break
   end
   puts Letters::Solver.solutions(letters).unique.first(20)
 end
