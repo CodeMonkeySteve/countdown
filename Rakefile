@@ -1,4 +1,11 @@
 $: << __dir__ + '/lib'
+require 'bundler/inline'
+gemfile do
+  gem 'activesupport'
+  gem 'rake'
+  gem 'duplicate'
+  gem 'rspec'
+end
 require 'active_support'
 require 'active_support/core_ext'
 $stdout.sync = true
