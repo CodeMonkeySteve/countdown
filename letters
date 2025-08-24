@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+$: << __dir__ + '/lib'
+require 'bundler/inline'
+gemfile do
+  gem 'activesupport'
+  gem 'rake'
+  gem 'duplicate'
+  gem 'rspec'
+end
+require 'active_support'
+require 'active_support/core_ext'
+require 'enumerable_ext'
+require 'letters'
+
+$stdout.sync = true
+
+print "Letters: "
+letters = $stdin.gets.chomp
+(letters.length == 9) or puts "Warning: expected 9 letters"
+
+puts Letters::Solver.solutions(letters).unique.first(20)

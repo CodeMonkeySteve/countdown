@@ -2,7 +2,7 @@
 
 ## Numbers Game
 
-    $ rake numbers
+    $ ./numbers
     Numbers: 75 25 7 2 5 1
     Target: 767
     (((75 + 1) * 2) * 5) + 7
@@ -13,7 +13,7 @@
 
 ## Letters Game
 
-    $ rake letters
+    $ ./letters
     Letters: C D B S T A E I R
     catbirds
     carbides
