@@ -14,7 +14,7 @@ require 'letters'
 
 $stdout.sync = true
 
-print "Letters: "
-letters = $stdin.gets.chomp
+letters = ARGV.flat_map { it.chomp.split('') }.reject(&:blank?)
+(letters.length == 9) or puts "Warning: expected 9 letters"
 
 puts Letters::Solver.solutions(letters, min_length: letters.length).unique.to_a

@@ -15,25 +15,13 @@ require 'numbers'
 $stdout.sync = true
 VALID_NUMBERS = (1..10).to_a + [25, 50, 75, 100].freeze
 
-numbers = target = nil
-loop do
-  print "Numbers: " ; numbers = $stdin.gets.chomp.split(/[\D]/).reject(&:blank?).map(&:to_i)
-  if numbers.length != 6
-    puts "Expected 6 numbers"
-  elsif !numbers.all? { |n|  VALID_NUMBERS.include?(n) }
-    puts "Invalid numbers"
-  else
-    break
-  end
-end
+args = ARGV.flat_map { it.chomp.split(/[\D]/) }.reject(&:blank?).map(&:to_i)
+(args.length == 7) or raise "Expected 7 numbers"
 
-loop do
-  print "Target: "  ; target = $stdin.gets.chomp.strip.to_i
-  if (target < 100) || (target > 999)
-    puts "Invalid target"
-  else
-    break
-  end
-end
+numbers = args[0, 6]
+numbers.all? { |n|  VALID_NUMBERS.include?(n) } or raise "Invalid numbers"
+
+target = args[-1]
+target.in?(100..999) or raise "Invalid target"
 
 puts Numbers::Solver.solutions(target, numbers).unique.first(10)
